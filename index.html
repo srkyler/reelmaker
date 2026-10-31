@@ -377,6 +377,18 @@
       }
 
       /* Card Row Carousel Container */
+      /* Card Row Carousel Container */
+      .carousel-wrapper-mobile {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        pointer-events: auto;
+        overflow: hidden;
+        z-index: 10;
+      }
+
       .carousel-container {
         position: absolute;
         top: 0;
@@ -404,6 +416,7 @@
         cursor: pointer;
         overflow: hidden;
         background-color: #C2D6BF;
+        border-radius: calc(15 * var(--u));
       }
 
       .card-media-box {
@@ -416,15 +429,37 @@
         overflow: hidden;
       }
 
+      .card-fallback-svg {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        display: block;
+        pointer-events: none;
+        z-index: 0;
+        border-radius: inherit;
+      }
+
       .card-poster {
         position: absolute;
         top: 0;
         left: 0;
         width: auto;
         height: auto;
+        max-width: none !important;
+        max-height: none !important;
         object-fit: cover;
         display: block;
         pointer-events: none;
+        opacity: 0;
+        transition: opacity 0.3s ease;
+        z-index: 1;
+      }
+
+      .card-poster.is-loaded {
+        opacity: 1;
       }
 
       .card-video {
@@ -433,11 +468,14 @@
         left: 0;
         width: auto;
         height: auto;
+        max-width: none !important;
+        max-height: none !important;
         object-fit: cover;
         display: block;
         opacity: 0;
         transition: opacity 0.4s ease;
         pointer-events: none;
+        z-index: 2;
       }
 
       .card-play-icon {
@@ -471,8 +509,10 @@
       /* SVG ClipPaths container */
       .svg-clip-defs {
         position: absolute;
-        width: 0;
-        height: 0;
+        top: -9999px;
+        left: -9999px;
+        width: 1440px;
+        height: 1080px;
         pointer-events: none;
       }
 
@@ -1982,20 +2022,44 @@
           const mediaBox = document.createElement('div');
           mediaBox.className = 'card-media-box';
 
-          // Poster Image
+          // Layer 0: Dedicated Fallback SVG (immediate, zero network delay, theme-tailored)
+          const fallbackSvg = document.createElement('img');
+          fallbackSvg.className = 'card-fallback-svg';
+          fallbackSvg.src = '/tiles/tile-' + i + '.svg';
+          fallbackSvg.alt = tile.title;
+          mediaBox.appendChild(fallbackSvg);
+
+          // Layer 1: Poster Image with Multi-Tier Fallback (Cloudfront -> /poster.webp -> SVG fallback)
           const poster = document.createElement('img');
           poster.className = 'card-poster';
-          poster.src = POSTER_URL;
           poster.alt = tile.title;
           poster.setAttribute('referrerpolicy', 'no-referrer');
+
+          let posterFallbackTried = false;
+          function onPosterSuccess() {
+            poster.classList.add('is-loaded');
+          }
+          poster.onload = onPosterSuccess;
+          poster.onerror = function () {
+            if (!posterFallbackTried) {
+              posterFallbackTried = true;
+              poster.src = '/poster.webp';
+            } else {
+              // Remote & local failed: keep poster hidden so SVG fallback is fully visible
+              poster.style.display = 'none';
+            }
+          };
+          poster.src = POSTER_URL;
+          if (poster.complete && poster.naturalWidth > 0) {
+            onPosterSuccess();
+          }
           mediaBox.appendChild(poster);
 
-          // Video Element (single shared source)
+          // Layer 2: Video Element (Cloudfront -> /loop.mp4)
           let video = null;
           if (!prefersReducedMotion) {
             video = document.createElement('video');
             video.className = 'card-video';
-            video.src = VIDEO_URL;
             video.muted = true;
             video.loop = true;
             video.playsInline = true;
@@ -2004,14 +2068,25 @@
             video.setAttribute('loop', '');
             video.preload = 'auto';
 
-            video.addEventListener('canplay', function () {
-              video.style.opacity = '1';
-            }, { once: true });
+            let videoFallbackTried = false;
+            video.onerror = function () {
+              if (!videoFallbackTried) {
+                videoFallbackTried = true;
+                video.src = '/loop.mp4';
+                video.load();
+                if (isMasterPlaying) {
+                  video.play().catch(function () {});
+                }
+              }
+            };
 
-            video.addEventListener('playing', function () {
+            function showVideo() {
               video.style.opacity = '1';
-            }, { once: true });
+            }
+            video.addEventListener('canplay', showVideo, { once: true });
+            video.addEventListener('playing', showVideo, { once: true });
 
+            video.src = VIDEO_URL;
             mediaBox.appendChild(video);
           }
 
@@ -2257,17 +2332,12 @@
               'Z'
             ].join(' ');
 
-            // Apply hardware-accelerated SVG clip-path and CSS clip-path path()
+            // Apply hardware-accelerated SVG clip-path and border-radius
             clipPathEl.setAttribute('d', pathD);
-            const pathRule = 'path("' + pathD + '")';
-            cardEl.style.clipPath = pathRule;
-            cardEl.style.webkitClipPath = pathRule;
-            // Fallback to SVG clip-path URL if path() is unsupported in older engine
-            if (!cardEl.style.clipPath || cardEl.style.clipPath === 'none') {
-              const clipUrl = 'url(#card-quad-clip-' + i + ')';
-              cardEl.style.clipPath = clipUrl;
-              cardEl.style.webkitClipPath = clipUrl;
-            }
+            const clipUrl = 'url(#card-quad-clip-' + i + ')';
+            cardEl.style.clipPath = clipUrl;
+            cardEl.style.webkitClipPath = clipUrl;
+            cardEl.style.borderRadius = r.toFixed(1) + 'px';
 
             // Media Tile Cover-Fit sizing:
             // "where the tile height is max(card height, card width / 0.7111)"
@@ -2458,10 +2528,16 @@
         function openCardModal(tile) {
           openModalWithHTML(`
             <div style="text-align: left;">
-              <span style="display: inline-block; padding: 4px 12px; background: #DAE7C7; color: #08482D; border-radius: 9999px; font-size: 13px; font-weight: 600; margin-bottom: 12px;">${tile.category}</span>
-              <h2 style="font-family: 'Inter Tight', sans-serif; font-size: 26px; font-weight: 700; color: #101410; margin-bottom: 6px;">${tile.title}</h2>
-              <p style="color: #5E5E61; font-size: 14.5px; margin-bottom: 20px;">Produzido por <strong style="color: #08482D;">${tile.creator}</strong> · ${tile.views} visualizações orgânicas</p>
-              <div style="background: #F5F8EF; border-radius: 14px; padding: 18px; margin-bottom: 24px; border: 1px solid rgba(8, 72, 45, 0.1);">
+              <div style="position: relative; width: 100%; height: 210px; border-radius: 14px; overflow: hidden; margin-bottom: 16px; background: #1B3828;">
+                <img src="/tiles/tile-${tile.id}.svg" alt="${tile.title}" style="width: 100%; height: 100%; object-fit: cover;" onerror="this.onerror=null;this.src='/poster.webp';" />
+                <div style="position: absolute; bottom: 12px; left: 12px; background: rgba(8, 72, 45, 0.85); color: #DAE7C7; font-size: 12px; padding: 4px 10px; border-radius: 9999px; font-weight: 600; backdrop-filter: blur(6px);">
+                  HD 60fps · ${tile.views} visualizações
+                </div>
+              </div>
+              <span style="display: inline-block; padding: 4px 12px; background: #DAE7C7; color: #08482D; border-radius: 9999px; font-size: 13px; font-weight: 600; margin-bottom: 10px;">${tile.category}</span>
+              <h2 style="font-family: 'Inter Tight', sans-serif; font-size: 24px; font-weight: 700; color: #101410; margin-bottom: 6px;">${tile.title}</h2>
+              <p style="color: #5E5E61; font-size: 14.5px; margin-bottom: 18px;">Produzido por <strong style="color: #08482D;">${tile.creator}</strong> · ${tile.views} visualizações orgânicas</p>
+              <div style="background: #F5F8EF; border-radius: 14px; padding: 16px; margin-bottom: 22px; border: 1px solid rgba(8, 72, 45, 0.1);">
                 <div style="font-size: 13px; font-weight: 600; color: #08482D; margin-bottom: 4px;">Criador Verificado Reelmark</div>
                 <div style="font-size: 13.5px; color: #444; line-height: 1.45;">Disponível para videografia exclusiva de produtos, unboxing dinâmico e reels em 4K para lançamentos. Prazo médio de entrega: 48 horas.</div>
               </div>
@@ -2553,7 +2629,7 @@
             card.className = 'showcase-card';
             card.innerHTML = `
               <div class="showcase-card-thumb">
-                <img src="${POSTER_URL}" alt="${tile.title}" style="object-position: ${tile.col * 25}% ${tile.row * 100}%; width: 100%; height: 100%; object-fit: cover;" referrerpolicy="no-referrer" />
+                <img src="/tiles/tile-${tile.id}.svg" alt="${tile.title}" style="width: 100%; height: 100%; object-fit: cover;" onerror="this.onerror=null;this.src='/poster.webp';" />
                 <div class="showcase-card-play">
                   <div style="width: 0; height: 0; border-top: 6px solid transparent; border-bottom: 6px solid transparent; border-left: 10px solid #08482D; margin-left: 2px;"></div>
                 </div>
