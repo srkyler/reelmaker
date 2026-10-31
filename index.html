@@ -1,0 +1,2682 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Reelmark — Conquiste Multidões com Reels Marcantes</title>
+    <meta name="description" content="Conquiste multidões com reels marcantes - marketplace de criadores de vídeos curtos com carrossel cilíndrico curvado e anotações feitas à mão." />
+    <meta property="og:title" content="Reelmark — Conquiste Multidões com Reels Marcantes" />
+    <meta property="og:description" content="Conquiste multidões com reels marcantes - marketplace de criadores de vídeos curtos com carrossel cilíndrico curvado e anotações feitas à mão." />
+    <meta property="og:type" content="website" />
+    <meta name="twitter:card" content="summary_large_image" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Caveat:wght@600&family=Inter+Tight:wght@700&family=Inter:wght@400;500;600&display=swap"
+      rel="stylesheet"
+    />
+
+    <style>
+      :root {
+        --u: min(100vw / 1440, 100vh / 1080);
+        --bg-page: #F5F8EF;
+        --forest: #08482D;
+        --mint-badge: #DAE7C7;
+        --ink: #101410;
+        --subline: #5E5E61;
+      }
+
+      * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+        -webkit-user-select: none;
+        user-select: none;
+      }
+
+      html, body {
+        width: 100%;
+        min-height: 100%;
+        background-color: var(--bg-page);
+        color: var(--ink);
+        font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+        overflow-x: hidden;
+        overflow-y: auto;
+        scroll-behavior: smooth;
+        display: block;
+      }
+
+      /* Desktop 1440x1080 Frame */
+      .frame-container {
+        position: relative;
+        width: calc(1440 * var(--u));
+        height: calc(1080 * var(--u));
+        max-width: 100vw;
+        max-height: 100vh;
+        background-color: var(--bg-page);
+        overflow: hidden;
+        margin: auto;
+      }
+
+      /* Top Bar */
+      .top-bar {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: calc(90 * var(--u));
+        pointer-events: none;
+        z-index: 50;
+      }
+
+      .logo-mark {
+        position: absolute;
+        left: calc(37 * var(--u));
+        top: calc(36 * var(--u));
+        display: inline-flex;
+        align-items: center;
+        gap: calc(9 * var(--u));
+        text-decoration: none;
+        color: var(--ink);
+        pointer-events: auto;
+        cursor: pointer;
+      }
+
+      .logo-leaf {
+        width: calc(26 * var(--u));
+        height: calc(26 * var(--u));
+        fill: var(--forest);
+        display: block;
+      }
+
+      .logo-text {
+        font-family: 'Inter Tight', 'Inter', sans-serif;
+        font-weight: 700;
+        font-size: calc(23 * var(--u));
+        letter-spacing: -0.03em;
+        color: var(--forest);
+      }
+
+      .nav-links {
+        position: absolute;
+        left: calc(505 * var(--u));
+        top: calc(38 * var(--u));
+        display: flex;
+        align-items: center;
+        gap: calc(31 * var(--u));
+        pointer-events: auto;
+      }
+
+      .nav-link {
+        font-family: 'Inter', sans-serif;
+        font-size: calc(16.4 * var(--u));
+        font-weight: 500;
+        color: var(--ink);
+        text-decoration: none;
+        white-space: nowrap;
+        transition: color 0.15s ease, transform 0.15s ease;
+        cursor: pointer;
+      }
+
+      .nav-link:hover {
+        color: var(--forest);
+      }
+
+      .top-buttons {
+        position: absolute;
+        right: calc(39 * var(--u));
+        top: calc(29 * var(--u));
+        display: flex;
+        align-items: center;
+        pointer-events: auto;
+      }
+
+      .btn-login {
+        position: absolute;
+        left: calc((1211 - 1440 + 39 + 97 + 92 + 20) * var(--u));
+        /* Specified directly at (1211, 29) */
+      }
+
+      .btn-pill-login {
+        position: absolute;
+        left: calc(1211 * var(--u));
+        top: calc(29 * var(--u));
+        width: calc(92 * var(--u));
+        height: calc(40 * var(--u));
+        background: #FFFFFF;
+        border: 1px solid rgba(8, 72, 45, 0.18);
+        border-radius: calc(20 * var(--u));
+        color: var(--forest);
+        font-family: 'Inter', sans-serif;
+        font-size: calc(14.8 * var(--u));
+        font-weight: 500;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+        pointer-events: auto;
+        transition: background 0.15s, border-color 0.15s, transform 0.15s;
+        text-decoration: none;
+        z-index: 52;
+      }
+
+      .btn-pill-login:hover {
+        background: #F7FAF2;
+        border-color: var(--forest);
+        transform: translateY(-1px);
+      }
+
+      .btn-pill-signup {
+        position: absolute;
+        left: calc(1304 * var(--u));
+        top: calc(29 * var(--u));
+        width: calc(97 * var(--u));
+        height: calc(40 * var(--u));
+        background: var(--forest);
+        border: none;
+        border-radius: calc(20 * var(--u));
+        color: #FFFFFF;
+        font-family: 'Inter', sans-serif;
+        font-size: calc(14.8 * var(--u));
+        font-weight: 500;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+        pointer-events: auto;
+        transition: background 0.15s, transform 0.15s;
+        text-decoration: none;
+        z-index: 52;
+      }
+
+      .btn-pill-signup:hover {
+        background: #0B5C3A;
+        transform: translateY(-1px);
+      }
+
+      /* Mint Badge at (575, 115) */
+      .badge-pill {
+        position: absolute;
+        left: calc(575 * var(--u));
+        top: calc(115 * var(--u));
+        width: calc(292 * var(--u));
+        height: calc(37 * var(--u));
+        background-color: var(--mint-badge);
+        border-radius: calc(18.5 * var(--u));
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-family: 'Inter', sans-serif;
+        font-weight: 500;
+        font-size: calc(16.6 * var(--u));
+        color: var(--forest);
+        white-space: nowrap;
+        pointer-events: auto;
+        cursor: default;
+        z-index: 20;
+      }
+
+      /* Headline centred, top 176 */
+      .headline-container {
+        position: absolute;
+        top: calc(176 * var(--u));
+        left: 0;
+        width: 100%;
+        text-align: center;
+        pointer-events: none;
+        z-index: 20;
+      }
+
+      .headline-line {
+        font-family: 'Inter Tight', sans-serif;
+        font-weight: 700;
+        font-size: calc(88 * var(--u));
+        line-height: calc(92 * var(--u));
+        color: var(--ink);
+        display: block;
+      }
+
+      .headline-line-1 {
+        letter-spacing: -0.035em;
+      }
+
+      .headline-line-2 {
+        letter-spacing: -0.022em;
+      }
+
+      /* Subline centred, top 394 */
+      .subline {
+        position: absolute;
+        top: calc(394 * var(--u));
+        left: 0;
+        width: 100%;
+        text-align: center;
+        font-family: 'Inter', sans-serif;
+        font-weight: 400;
+        font-size: calc(20.8 * var(--u));
+        line-height: calc(32 * var(--u));
+        color: var(--subline);
+        pointer-events: none;
+        z-index: 20;
+      }
+
+      /* Doodles and Notes */
+      .doodle {
+        position: absolute;
+        pointer-events: none;
+        z-index: 30;
+      }
+
+      .doodle-slashes {
+        left: calc(263 * var(--u));
+        top: calc(377 * var(--u));
+        width: calc(36 * var(--u));
+        height: calc(38 * var(--u));
+      }
+
+      .handwritten-note {
+        font-family: 'Caveat', cursive;
+        font-weight: 600;
+        color: var(--forest);
+        pointer-events: none;
+        z-index: 30;
+      }
+
+      .note-beseen {
+        position: absolute;
+        left: calc(1212 * var(--u));
+        top: calc(310 * var(--u));
+        transform: rotate(16deg);
+        transform-origin: top left;
+        font-size: calc(30 * var(--u));
+        line-height: 1.08;
+        white-space: nowrap;
+      }
+
+      .doodle-arrow-beseen {
+        left: calc(1170 * var(--u));
+        top: calc(380 * var(--u));
+        width: calc(110 * var(--u));
+        height: calc(160 * var(--u));
+      }
+
+      .note-zerocost {
+        position: absolute;
+        left: calc(521 * var(--u));
+        top: calc(937 * var(--u));
+        transform: rotate(24deg);
+        transform-origin: top left;
+        font-size: calc(26 * var(--u));
+        white-space: nowrap;
+      }
+
+      .doodle-arrow-zerocost {
+        left: calc(576 * var(--u));
+        top: calc(922 * var(--u));
+        width: calc(52 * var(--u));
+        height: calc(36 * var(--u));
+      }
+
+      /* Button at (626, 901) */
+      .cta-button-wrapper {
+        position: absolute;
+        left: calc(626 * var(--u));
+        top: calc(901 * var(--u));
+        width: calc(190 * var(--u));
+        height: calc(74 * var(--u));
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        z-index: 40;
+      }
+
+      .cta-dashed-ring {
+        position: absolute;
+        width: calc(190 * var(--u));
+        height: calc(74 * var(--u));
+        border: calc(1.8 * var(--u)) dashed var(--forest);
+        border-radius: calc(37 * var(--u));
+        pointer-events: none;
+        transition: transform 0.3s ease, border-color 0.2s;
+      }
+
+      .cta-pill-button {
+        position: absolute;
+        width: calc(172 * var(--u));
+        height: calc(58 * var(--u));
+        background: var(--forest);
+        border: none;
+        border-radius: calc(29 * var(--u));
+        color: #FFFFFF;
+        font-family: 'Inter', sans-serif;
+        font-weight: 600;
+        font-size: calc(18.2 * var(--u));
+        letter-spacing: -0.01em;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+        transition: background-color 0.2s ease, transform 0.2s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.2s ease;
+        box-shadow: 0 calc(4 * var(--u)) calc(12 * var(--u)) rgba(8, 72, 45, 0.2);
+        text-decoration: none;
+      }
+
+      .cta-button-wrapper:hover .cta-dashed-ring {
+        transform: scale(1.04);
+      }
+
+      .cta-button-wrapper:hover .cta-pill-button {
+        background-color: #0B5C3A;
+        transform: scale(1.02);
+        box-shadow: 0 calc(6 * var(--u)) calc(16 * var(--u)) rgba(8, 72, 45, 0.28);
+      }
+
+      .cta-pill-button:active {
+        transform: scale(0.98);
+      }
+
+      /* Card Row Carousel Container */
+      .carousel-container {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        overflow: hidden;
+        pointer-events: auto;
+        cursor: grab;
+        z-index: 10;
+        touch-action: pan-y;
+      }
+
+      .carousel-container.is-dragging {
+        cursor: grabbing;
+      }
+
+      .card-item {
+        position: absolute;
+        top: 0;
+        left: 0;
+        will-change: transform, clip-path;
+        transform-origin: center center;
+        pointer-events: auto;
+        cursor: pointer;
+        overflow: hidden;
+        background-color: #C2D6BF;
+      }
+
+      .card-media-box {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        pointer-events: none;
+        overflow: hidden;
+      }
+
+      .card-poster {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: auto;
+        height: auto;
+        object-fit: cover;
+        display: block;
+        pointer-events: none;
+      }
+
+      .card-video {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: auto;
+        height: auto;
+        object-fit: cover;
+        display: block;
+        opacity: 0;
+        transition: opacity 0.4s ease;
+        pointer-events: none;
+      }
+
+      .card-play-icon {
+        position: absolute;
+        bottom: calc(16 * var(--u));
+        left: calc(16 * var(--u));
+        width: calc(34 * var(--u));
+        height: calc(34 * var(--u));
+        border-radius: 50%;
+        background: rgba(255, 255, 255, 0.25);
+        backdrop-filter: blur(8px);
+        -webkit-backdrop-filter: blur(8px);
+        border: 1px solid rgba(255, 255, 255, 0.45);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        box-shadow: 0 calc(2 * var(--u)) calc(8 * var(--u)) rgba(0, 0, 0, 0.15);
+        pointer-events: none;
+        z-index: 5;
+      }
+
+      .card-play-triangle {
+        width: 0;
+        height: 0;
+        border-top: calc(5.5 * var(--u)) solid transparent;
+        border-bottom: calc(5.5 * var(--u)) solid transparent;
+        border-left: calc(9 * var(--u)) solid #FFFFFF;
+        margin-left: calc(2 * var(--u));
+      }
+
+      /* SVG ClipPaths container */
+      .svg-clip-defs {
+        position: absolute;
+        width: 0;
+        height: 0;
+        pointer-events: none;
+      }
+
+      /* Modal Dialogs */
+      .modal-backdrop {
+        position: fixed;
+        inset: 0;
+        background: rgba(16, 20, 16, 0.6);
+        backdrop-filter: blur(6px);
+        -webkit-backdrop-filter: blur(6px);
+        display: none;
+        align-items: center;
+        justify-content: center;
+        z-index: 100;
+        padding: 20px;
+        opacity: 0;
+        transition: opacity 0.25s ease;
+      }
+
+      .modal-backdrop.open {
+        display: flex;
+        opacity: 1;
+      }
+
+      .modal-box {
+        background: #FFFFFF;
+        border-radius: 20px;
+        padding: 32px;
+        max-width: 480px;
+        width: 100%;
+        box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+        position: relative;
+        transform: translateY(20px) scale(0.95);
+        transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+      }
+
+      .modal-backdrop.open .modal-box {
+        transform: translateY(0) scale(1);
+      }
+
+      .modal-close {
+        position: absolute;
+        top: 20px;
+        right: 20px;
+        background: #F1F4EB;
+        border: none;
+        width: 32px;
+        height: 32px;
+        border-radius: 50%;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 18px;
+        color: var(--forest);
+        font-weight: 600;
+      }
+
+      /* Toast */
+      .toast {
+        position: fixed;
+        bottom: 24px;
+        left: 50%;
+        transform: translateX(-50%) translateY(80px);
+        background: var(--forest);
+        color: #FFFFFF;
+        padding: 12px 24px;
+        border-radius: 9999px;
+        font-size: 14px;
+        font-weight: 500;
+        box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
+        transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.3s ease;
+        opacity: 0;
+        pointer-events: none;
+        z-index: 200;
+      }
+
+      .toast.visible {
+        transform: translateX(-50%) translateY(0);
+        opacity: 1;
+      }
+
+      /* Phones / Tablets (≤ 820px) Responsive Breakpoint */
+      @media (max-width: 820px) {
+        :root {
+          --u: calc(100vw / 640);
+        }
+
+        html, body {
+          display: block;
+          height: auto;
+          min-height: 100%;
+        }
+
+        .frame-container {
+          width: 100vw;
+          height: auto;
+          min-height: 100vh;
+          overflow: visible;
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          padding: 20px 16px 40px;
+        }
+
+        .top-bar {
+          position: relative;
+          height: 60px;
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+          padding: 0 8px;
+          pointer-events: auto;
+        }
+
+        .logo-mark {
+          position: static;
+        }
+
+        .logo-leaf {
+          width: 24px;
+          height: 24px;
+        }
+
+        .logo-text {
+          font-size: 20px;
+        }
+
+        .nav-links, .btn-pill-login {
+          display: none !important;
+        }
+
+        .btn-pill-signup {
+          position: static !important;
+          width: 86px;
+          height: 36px;
+          font-size: 14px;
+        }
+
+        .badge-pill {
+          position: relative !important;
+          left: auto !important;
+          top: auto !important;
+          margin-top: 24px;
+          width: auto;
+          padding: 6px 18px;
+          font-size: 13.5px;
+          height: 32px;
+        }
+
+        .headline-container {
+          position: relative !important;
+          top: auto !important;
+          margin-top: 20px;
+          padding: 0 12px;
+        }
+
+        .headline-line {
+          font-size: clamp(38px, 9vw, 56px) !important;
+          line-height: 1.08 !important;
+        }
+
+        .subline {
+          position: relative !important;
+          top: auto !important;
+          margin-top: 16px;
+          padding: 0 20px;
+          font-size: 16px !important;
+          line-height: 24px !important;
+        }
+
+        .doodle-slashes,
+        .note-beseen,
+        .doodle-arrow-beseen {
+          display: none !important;
+        }
+
+        /* Responsive 250px-tall curved carousel band */
+        .carousel-wrapper-mobile {
+          position: relative;
+          width: 100vw;
+          margin-left: -16px;
+          margin-right: -16px;
+          height: 260px;
+          overflow: hidden;
+          margin-top: 30px;
+          margin-bottom: 24px;
+        }
+
+        .carousel-container {
+          position: absolute;
+          top: 0;
+          left: 0;
+          width: 100%;
+          height: 100%;
+        }
+
+        .cta-button-wrapper {
+          position: relative !important;
+          left: auto !important;
+          top: auto !important;
+          margin-top: 10px;
+          width: 190px;
+          height: 74px;
+        }
+
+        .cta-dashed-ring {
+          width: 190px !important;
+          height: 74px !important;
+          border-width: 1.8px !important;
+          border-radius: 37px !important;
+        }
+
+        .cta-pill-button {
+          width: 172px !important;
+          height: 58px !important;
+          border-radius: 29px !important;
+          font-size: 17px !important;
+        }
+
+        .note-zerocost {
+          position: relative !important;
+          left: auto !important;
+          top: auto !important;
+          margin-top: 8px;
+          transform: rotate(0deg) !important;
+          font-size: 20px !important;
+        }
+
+        .doodle-arrow-zerocost {
+          display: none !important;
+        }
+      }
+
+      /* General Page Sections Styling */
+      .page-section {
+        width: 100%;
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 96px 24px;
+        position: relative;
+      }
+
+      .section-header {
+        text-align: center;
+        max-width: 760px;
+        margin: 0 auto 56px;
+      }
+
+      .section-kicker {
+        display: inline-block;
+        padding: 6px 16px;
+        background: var(--mint-badge);
+        color: var(--forest);
+        border-radius: 9999px;
+        font-size: 13.5px;
+        font-weight: 600;
+        letter-spacing: -0.01em;
+        margin-bottom: 16px;
+      }
+
+      .section-title {
+        font-family: 'Inter Tight', sans-serif;
+        font-size: clamp(32px, 3.8vw, 46px);
+        font-weight: 700;
+        line-height: 1.15;
+        letter-spacing: -0.025em;
+        color: var(--ink);
+        margin-bottom: 16px;
+      }
+
+      .section-desc {
+        font-size: 17.5px;
+        line-height: 1.6;
+        color: var(--subline);
+      }
+
+      /* Section Metrics */
+      .metrics-grid {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 20px;
+        background: #FFFFFF;
+        border: 1px solid rgba(8, 72, 45, 0.12);
+        border-radius: 24px;
+        padding: 36px 32px;
+        box-shadow: 0 4px 20px rgba(8, 72, 45, 0.04);
+      }
+
+      .metric-card {
+        text-align: center;
+        padding: 12px;
+        position: relative;
+      }
+
+      .metric-card:not(:last-child)::after {
+        content: '';
+        position: absolute;
+        right: -10px;
+        top: 20%;
+        height: 60%;
+        width: 1px;
+        background: rgba(8, 72, 45, 0.1);
+      }
+
+      .metric-val {
+        font-family: 'Inter Tight', sans-serif;
+        font-size: 44px;
+        font-weight: 700;
+        color: var(--forest);
+        line-height: 1.1;
+        margin-bottom: 8px;
+        font-variant-numeric: tabular-nums;
+      }
+
+      .metric-label {
+        font-size: 14.5px;
+        color: var(--subline);
+        line-height: 1.4;
+      }
+
+      .brands-strip {
+        margin-top: 42px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-wrap: wrap;
+        gap: 36px;
+        opacity: 0.75;
+      }
+
+      .brand-logo-item {
+        font-family: 'Inter Tight', sans-serif;
+        font-weight: 700;
+        font-size: 18px;
+        color: #38483B;
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        letter-spacing: -0.02em;
+      }
+
+      /* Workflow Section */
+      .workflow-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 24px;
+      }
+
+      .workflow-card {
+        background: #FFFFFF;
+        border: 1px solid rgba(8, 72, 45, 0.1);
+        border-radius: 20px;
+        padding: 36px 28px;
+        position: relative;
+        transition: transform 0.2s ease, box-shadow 0.2s ease;
+      }
+
+      .workflow-card:hover {
+        transform: translateY(-4px);
+        box-shadow: 0 12px 30px rgba(8, 72, 45, 0.08);
+      }
+
+      .workflow-num {
+        font-family: 'Inter Tight', sans-serif;
+        font-size: 18px;
+        font-weight: 700;
+        color: var(--forest);
+        margin-bottom: 18px;
+        display: inline-block;
+        padding: 4px 10px;
+        background: #F1F6EC;
+        border-radius: 8px;
+      }
+
+      .workflow-card-title {
+        font-family: 'Inter Tight', sans-serif;
+        font-size: 22px;
+        font-weight: 700;
+        color: var(--ink);
+        margin-bottom: 12px;
+        letter-spacing: -0.015em;
+      }
+
+      .workflow-card-desc {
+        font-size: 15px;
+        line-height: 1.6;
+        color: var(--subline);
+      }
+
+      /* Filterable Showcase */
+      .showcase-tabs {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-wrap: wrap;
+        gap: 10px;
+        margin-bottom: 40px;
+      }
+
+      .showcase-tab {
+        padding: 8px 18px;
+        border-radius: 9999px;
+        font-size: 14px;
+        font-weight: 500;
+        background: #FFFFFF;
+        border: 1px solid rgba(8, 72, 45, 0.15);
+        color: var(--ink);
+        cursor: pointer;
+        transition: all 0.2s ease;
+      }
+
+      .showcase-tab:hover {
+        border-color: var(--forest);
+        color: var(--forest);
+      }
+
+      .showcase-tab.active {
+        background: var(--forest);
+        color: #FFFFFF;
+        border-color: var(--forest);
+      }
+
+      .showcase-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 24px;
+      }
+
+      .showcase-card {
+        background: #FFFFFF;
+        border: 1px solid rgba(8, 72, 45, 0.1);
+        border-radius: 20px;
+        overflow: hidden;
+        cursor: pointer;
+        transition: transform 0.25s ease, box-shadow 0.25s ease;
+        display: flex;
+        flex-direction: column;
+      }
+
+      .showcase-card:hover {
+        transform: translateY(-4px);
+        box-shadow: 0 16px 36px rgba(8, 72, 45, 0.09);
+      }
+
+      .showcase-card-thumb {
+        position: relative;
+        width: 100%;
+        height: 220px;
+        background: #C2D6BF;
+        overflow: hidden;
+      }
+
+      .showcase-card-thumb img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+
+      .showcase-card-play {
+        position: absolute;
+        inset: 0;
+        margin: auto;
+        width: 44px;
+        height: 44px;
+        background: rgba(255, 255, 255, 0.85);
+        backdrop-filter: blur(4px);
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        transition: transform 0.2s ease;
+      }
+
+      .showcase-card:hover .showcase-card-play {
+        transform: scale(1.1);
+      }
+
+      .showcase-card-body {
+        padding: 20px;
+        display: flex;
+        flex-direction: column;
+        flex: 1;
+      }
+
+      .showcase-card-cat {
+        font-size: 12px;
+        font-weight: 600;
+        color: var(--forest);
+        text-transform: uppercase;
+        letter-spacing: 0.05em;
+        margin-bottom: 6px;
+      }
+
+      .showcase-card-name {
+        font-family: 'Inter Tight', sans-serif;
+        font-size: 19px;
+        font-weight: 700;
+        color: var(--ink);
+        margin-bottom: 8px;
+      }
+
+      .showcase-card-meta {
+        margin-top: auto;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        font-size: 13.5px;
+        color: var(--subline);
+        padding-top: 12px;
+        border-top: 1px solid rgba(8, 72, 45, 0.08);
+      }
+
+      /* Testimonials */
+      .testimonials-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 24px;
+      }
+
+      .testimonial-card {
+        background: #FFFFFF;
+        border: 1px solid rgba(8, 72, 45, 0.1);
+        border-radius: 20px;
+        padding: 32px 26px;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        position: relative;
+      }
+
+      .testimonial-quote {
+        font-size: 15.5px;
+        line-height: 1.6;
+        color: #242924;
+        margin-bottom: 24px;
+      }
+
+      .testimonial-author {
+        display: flex;
+        align-items: center;
+        gap: 14px;
+      }
+
+      .testimonial-avatar {
+        width: 46px;
+        height: 46px;
+        border-radius: 50%;
+        background: var(--mint-badge);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-weight: 700;
+        color: var(--forest);
+        font-size: 17px;
+      }
+
+      .testimonial-name {
+        font-weight: 600;
+        font-size: 15px;
+        color: var(--ink);
+      }
+
+      .testimonial-role {
+        font-size: 13px;
+        color: var(--subline);
+      }
+
+      /* Pricing Section */
+      .pricing-toggle-wrap {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 12px;
+        margin-bottom: 48px;
+      }
+
+      .pricing-switch-btn {
+        background: #FFFFFF;
+        border: 1px solid rgba(8, 72, 45, 0.18);
+        border-radius: 9999px;
+        padding: 4px;
+        display: inline-flex;
+        cursor: pointer;
+      }
+
+      .pricing-switch-option {
+        padding: 8px 18px;
+        border-radius: 9999px;
+        font-size: 14px;
+        font-weight: 600;
+        transition: all 0.2s ease;
+        color: var(--subline);
+      }
+
+      .pricing-switch-option.active {
+        background: var(--forest);
+        color: #FFFFFF;
+      }
+
+      .pricing-badge-save {
+        background: var(--mint-badge);
+        color: var(--forest);
+        padding: 4px 10px;
+        border-radius: 9999px;
+        font-size: 12px;
+        font-weight: 700;
+      }
+
+      .pricing-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 24px;
+        align-items: stretch;
+      }
+
+      .pricing-card {
+        background: #FFFFFF;
+        border: 1px solid rgba(8, 72, 45, 0.12);
+        border-radius: 24px;
+        padding: 36px 30px;
+        display: flex;
+        flex-direction: column;
+        position: relative;
+        transition: transform 0.25s ease, box-shadow 0.25s ease;
+      }
+
+      .pricing-card.featured {
+        border: 2px solid var(--forest);
+        box-shadow: 0 16px 40px rgba(8, 72, 45, 0.12);
+        transform: scale(1.02);
+      }
+
+      .pricing-popular-tag {
+        position: absolute;
+        top: -14px;
+        left: 50%;
+        transform: translateX(-50%);
+        background: var(--forest);
+        color: #FFFFFF;
+        font-size: 12px;
+        font-weight: 700;
+        padding: 4px 14px;
+        border-radius: 9999px;
+        text-transform: uppercase;
+        letter-spacing: 0.04em;
+      }
+
+      .pricing-plan-name {
+        font-family: 'Inter Tight', sans-serif;
+        font-size: 24px;
+        font-weight: 700;
+        color: var(--ink);
+        margin-bottom: 8px;
+      }
+
+      .pricing-plan-desc {
+        font-size: 14px;
+        color: var(--subline);
+        margin-bottom: 24px;
+        line-height: 1.5;
+      }
+
+      .pricing-price-box {
+        margin-bottom: 24px;
+        display: flex;
+        align-items: baseline;
+        gap: 6px;
+      }
+
+      .pricing-currency {
+        font-size: 20px;
+        font-weight: 600;
+        color: var(--ink);
+      }
+
+      .pricing-amount {
+        font-family: 'Inter Tight', sans-serif;
+        font-size: 46px;
+        font-weight: 700;
+        color: var(--ink);
+        font-variant-numeric: tabular-nums;
+      }
+
+      .pricing-period {
+        font-size: 14px;
+        color: var(--subline);
+      }
+
+      .pricing-features-list {
+        list-style: none;
+        margin-bottom: 32px;
+        display: flex;
+        flex-direction: column;
+        gap: 12px;
+        flex: 1;
+      }
+
+      .pricing-feature-item {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        font-size: 14.5px;
+        color: #2D332D;
+      }
+
+      .pricing-feature-icon {
+        width: 18px;
+        height: 18px;
+        border-radius: 50%;
+        background: #E8EFE3;
+        color: var(--forest);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 11px;
+        font-weight: 800;
+        flex-shrink: 0;
+      }
+
+      .pricing-btn {
+        width: 100%;
+        height: 48px;
+        border-radius: 9999px;
+        font-weight: 600;
+        font-size: 15px;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        transition: all 0.2s ease;
+        text-decoration: none;
+      }
+
+      .pricing-btn-primary {
+        background: var(--forest);
+        color: #FFFFFF;
+        border: none;
+      }
+
+      .pricing-btn-primary:hover {
+        background: #0B5C3A;
+      }
+
+      .pricing-btn-outline {
+        background: #FFFFFF;
+        color: var(--forest);
+        border: 1px solid rgba(8, 72, 45, 0.25);
+      }
+
+      .pricing-btn-outline:hover {
+        background: #F5F8EF;
+        border-color: var(--forest);
+      }
+
+      /* FAQ Accordion */
+      .faq-list {
+        max-width: 820px;
+        margin: 0 auto;
+        display: flex;
+        flex-direction: column;
+        gap: 14px;
+      }
+
+      .faq-item {
+        background: #FFFFFF;
+        border: 1px solid rgba(8, 72, 45, 0.12);
+        border-radius: 16px;
+        overflow: hidden;
+        transition: border-color 0.2s;
+      }
+
+      .faq-question {
+        padding: 22px 24px;
+        font-family: 'Inter Tight', sans-serif;
+        font-size: 18px;
+        font-weight: 600;
+        color: var(--ink);
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        cursor: pointer;
+        user-select: none;
+      }
+
+      .faq-chevron {
+        width: 20px;
+        height: 20px;
+        transition: transform 0.25s ease;
+        color: var(--forest);
+        flex-shrink: 0;
+      }
+
+      .faq-item.open .faq-chevron {
+        transform: rotate(180deg);
+      }
+
+      .faq-answer {
+        max-height: 0;
+        overflow: hidden;
+        transition: max-height 0.3s cubic-bezier(0.16, 1, 0.3, 1), padding 0.25s ease;
+        padding: 0 24px;
+        color: var(--subline);
+        font-size: 15px;
+        line-height: 1.6;
+      }
+
+      .faq-item.open .faq-answer {
+        max-height: 240px;
+        padding-bottom: 22px;
+      }
+
+      /* Final CTA Banner */
+      .cta-banner-box {
+        background: var(--forest);
+        border-radius: 28px;
+        padding: 72px 48px;
+        color: #FFFFFF;
+        text-align: center;
+        position: relative;
+        overflow: hidden;
+      }
+
+      .cta-banner-title {
+        font-family: 'Inter Tight', sans-serif;
+        font-size: clamp(34px, 4.2vw, 52px);
+        font-weight: 700;
+        letter-spacing: -0.025em;
+        margin-bottom: 16px;
+        line-height: 1.15;
+      }
+
+      .cta-banner-desc {
+        font-size: 18px;
+        color: rgba(255, 255, 255, 0.85);
+        max-width: 620px;
+        margin: 0 auto 36px;
+        line-height: 1.55;
+      }
+
+      .cta-banner-btn-group {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 16px;
+        flex-wrap: wrap;
+      }
+
+      .cta-banner-primary-btn {
+        height: 52px;
+        padding: 0 32px;
+        background: #FFFFFF;
+        color: var(--forest);
+        border-radius: 9999px;
+        font-weight: 600;
+        font-size: 16px;
+        border: none;
+        cursor: pointer;
+        transition: transform 0.2s ease, background 0.2s ease;
+      }
+
+      .cta-banner-primary-btn:hover {
+        background: #F5F8EF;
+        transform: scale(1.03);
+      }
+
+      /* Quiet Footer */
+      .footer-main {
+        width: 100%;
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 48px 24px 64px;
+        border-top: 1px solid rgba(8, 72, 45, 0.1);
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        flex-wrap: wrap;
+        gap: 24px;
+      }
+
+      .footer-left {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+      }
+
+      .footer-copy {
+        font-size: 14px;
+        color: var(--subline);
+      }
+
+      .footer-nav {
+        display: flex;
+        align-items: center;
+        gap: 24px;
+      }
+
+      .footer-nav a {
+        font-size: 14px;
+        color: var(--subline);
+        text-decoration: none;
+        transition: color 0.15s;
+      }
+
+      .footer-nav a:hover {
+        color: var(--forest);
+      }
+
+      /* Responsive Adjustments for Sections */
+      @media (max-width: 820px) {
+        .page-section {
+          padding: 64px 16px;
+        }
+
+        .metrics-grid {
+          grid-template-columns: repeat(2, 1fr);
+          padding: 24px 16px;
+        }
+
+        .metric-card:not(:last-child)::after {
+          display: none;
+        }
+
+        .metric-val {
+          font-size: 34px;
+        }
+
+        .workflow-grid,
+        .showcase-grid,
+        .testimonials-grid,
+        .pricing-grid {
+          grid-template-columns: 1fr;
+        }
+
+        .pricing-card.featured {
+          transform: none;
+        }
+
+        .cta-banner-box {
+          padding: 48px 20px;
+        }
+
+        .footer-main {
+          flex-direction: column;
+          align-items: center;
+          text-align: center;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <!-- SVG Clip Path Definitions for 10 cards -->
+    <svg class="svg-clip-defs" id="svg-defs">
+      <defs id="clip-paths-container">
+        <!-- Recomputed per frame via JS for hardware-accelerated clipping -->
+      </defs>
+    </svg>
+
+    <!-- 1440x1080 Contained Frame -->
+    <main class="frame-container" id="frame">
+      <!-- Top Bar -->
+      <header class="top-bar" id="nav-header">
+        <!-- Logo -->
+        <a href="#" class="logo-mark" aria-label="Reelmark Home">
+          <svg class="logo-leaf" viewBox="0 0 24 24">
+            <path d="M17 8C8 10 5.9 16.17 3.82 21.34l1.89.66.95-2.3c.48.17.98.3 1.34.3C19 20 22 3 22 3c-1 2-8 2.25-13 3.25S2 11.5 2 13.5c0 4.5 4 8 8 8 2.5 0 4.5-1.5 7-5.5.5-.8 1-1.6 1.5-2.5-.5-.4-1-.9-1.5-1.5z"/>
+          </svg>
+          <span class="logo-text">Reelmark</span>
+        </a>
+
+        <!-- Nav -->
+        <nav class="nav-links" aria-label="Navegação Principal">
+          <a href="#marcas" class="nav-link" data-nav="Marcas">Marcas</a>
+          <a href="#criadores" class="nav-link" data-nav="Criadores">Criadores</a>
+          <a href="#precos" class="nav-link" data-nav="Preços">Preços</a>
+          <a href="#casos-de-uso" class="nav-link" data-nav="Casos de Uso">Casos de Uso</a>
+          <a href="#contato" class="nav-link" data-nav="Contato">Contato</a>
+        </nav>
+
+        <!-- Buttons -->
+        <button class="btn-pill-login" id="btn-login" aria-label="Entrar">Entrar</button>
+        <button class="btn-pill-signup" id="btn-signup" aria-label="Cadastrar">Cadastrar</button>
+      </header>
+
+      <!-- Badge at (575, 115) -->
+      <aside class="badge-pill" id="hero-badge">
+        Aprovado por +120.000 criadores
+      </aside>
+
+      <!-- Headline centred, top 176 -->
+      <h1 class="headline-container" id="hero-headline">
+        <span class="headline-line headline-line-1">Conquiste Multidões</span>
+        <span class="headline-line headline-line-2">com Reels Marcantes</span>
+      </h1>
+
+      <!-- Subline centred, top 394 -->
+      <p class="subline" id="hero-subline">
+        Impulsione sua marca com vídeos curtos e dinâmicos de<br />
+        nossos criadores selecionados a dedo. Nossa equipe está pronta para<br />
+        levar seu próximo lançamento às alturas.
+      </p>
+
+      <!-- Doodle: // at (263, 377) -->
+      <svg class="doodle doodle-slashes" id="doodle-slashes" viewBox="0 0 36 38" fill="none">
+        <path class="draw-stroke" d="M 8 34 C 10 22, 13 12, 16 4" stroke="#08482D" stroke-width="2.6" stroke-linecap="round" />
+        <path class="draw-stroke" d="M 20 34 C 22 22, 25 12, 28 4" stroke="#08482D" stroke-width="2.6" stroke-linecap="round" />
+      </svg>
+
+      <!-- Handwritten note: "Seja visto / com reels" at (1212, 310) -->
+      <div class="handwritten-note note-beseen" id="note-beseen">
+        <div>Seja visto</div>
+        <div>com reels</div>
+      </div>
+
+      <!-- Arrow curving down from below "Seja visto" to cards -->
+      <svg class="doodle doodle-arrow-beseen" id="doodle-arrow-beseen" viewBox="0 0 110 160" fill="none">
+        <path class="draw-stroke" d="M 68 6 C 78 38, 70 82, 44 116 C 30 134, 18 144, 8 149" stroke="#08482D" stroke-width="2.4" stroke-linecap="round" />
+        <path class="draw-stroke" d="M 21 140 L 6 150 L 9 133" stroke="#08482D" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" />
+      </svg>
+
+      <!-- Mobile wrapper or Desktop Carousel -->
+      <div class="carousel-wrapper-mobile" id="carousel-wrapper">
+        <div class="carousel-container" id="carousel" aria-label="Carrossel de vídeos curtos curvado">
+          <!-- 10 Card Items dynamically positioned and clipped -->
+        </div>
+      </div>
+
+      <!-- Button at (626, 901) with dashed outline ring -->
+      <div class="cta-button-wrapper" id="cta-wrapper">
+        <div class="cta-dashed-ring"></div>
+        <button class="cta-pill-button" id="btn-make-reel" aria-label="Criar um Reel">
+          Criar um Reel
+        </button>
+      </div>
+
+      <!-- Note: "Custo zero" at (521, 937) -->
+      <div class="handwritten-note note-zerocost" id="note-zerocost">
+        Custo zero
+      </div>
+
+      <!-- Small arrow pointing to the button -->
+      <svg class="doodle doodle-arrow-zerocost" id="doodle-arrow-zerocost" viewBox="0 0 52 36" fill="none">
+        <path class="draw-stroke" d="M 4 22 C 16 21, 28 17, 40 10" stroke="#08482D" stroke-width="2.2" stroke-linecap="round" />
+        <path class="draw-stroke" d="M 30 6 L 42 10 L 36 20" stroke="#08482D" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" />
+      </svg>
+    </main>
+
+    <!-- SECTION 1: Métricas & Marcas (#marcas) -->
+    <section class="page-section" id="marcas">
+      <div class="metrics-grid">
+        <div class="metric-card">
+          <div class="metric-val">+310%</div>
+          <div class="metric-label">Aumento médio no ROAS de campanhas em TikTok e Reels</div>
+        </div>
+        <div class="metric-card">
+          <div class="metric-val">48h</div>
+          <div class="metric-label">Prazo médio de entrega após recebimento do produto</div>
+        </div>
+        <div class="metric-card">
+          <div class="metric-val">120K+</div>
+          <div class="metric-label">Vídeos curtos produzidos e validados para e-commerces</div>
+        </div>
+        <div class="metric-card">
+          <div class="metric-val">98,4%</div>
+          <div class="metric-label">Taxa de aprovação dos roteiros e gravações na 1ª versão</div>
+        </div>
+      </div>
+
+      <div class="brands-strip">
+        <span style="font-size: 13px; font-weight: 600; color: #5E5E61; text-transform: uppercase; letter-spacing: 0.05em;">Marcas que escalam com a Reelmark:</span>
+        <div class="brand-logo-item">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="#08482D"><circle cx="12" cy="12" r="10"/></svg>
+          Lumina Skincare
+        </div>
+        <div class="brand-logo-item">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="#08482D"><rect x="3" y="3" width="18" height="18" rx="4"/></svg>
+          AeroStride
+        </div>
+        <div class="brand-logo-item">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="#08482D"><polygon points="12,2 22,22 2,22"/></svg>
+          Nova Audio Tech
+        </div>
+        <div class="brand-logo-item">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="#08482D"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
+          Botanik Lab
+        </div>
+        <div class="brand-logo-item">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="#08482D"><circle cx="12" cy="12" r="8" fill="none" stroke="#08482D" stroke-width="3"/></svg>
+          Brewcraft Coffee
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 2: Como Funciona (#criadores) -->
+    <section class="page-section" id="criadores">
+      <div class="section-header">
+        <span class="section-kicker">Fluxo Simplificado</span>
+        <h2 class="section-title">Do briefing ao reel viral em três etapas sem atrito</h2>
+        <p class="section-desc">
+          Chega de trocar e-mails infinitos com agências tradicionais ou lidar com amadores. Nossa plataforma cuida de todo o processo com criadores nativos de vídeo.
+        </p>
+      </div>
+
+      <div class="workflow-grid">
+        <div class="workflow-card">
+          <span class="workflow-num">01</span>
+          <h3 class="workflow-card-title">Envie seu Briefing</h3>
+          <p class="workflow-card-desc">
+            Informe o link da sua loja ou produto, defina os objetivos principais (vendas, branding ou lançamento) e selecione o estilo visual preferido.
+          </p>
+        </div>
+
+        <div class="workflow-card">
+          <span class="workflow-num">02</span>
+          <h3 class="workflow-card-title">Produção em 4K</h3>
+          <p class="workflow-card-desc">
+            Nossos criadores avaliados recebem o produto, desenvolvem ganchos (hooks) envolventes nos primeiros 3 segundos e capturam imagens em altíssima definição.
+          </p>
+        </div>
+
+        <div class="workflow-card">
+          <span class="workflow-num">03</span>
+          <h3 class="workflow-card-title">Aprovação & Escala</h3>
+          <p class="workflow-card-desc">
+            Revise os cortes diretamente no painel. Aprove com um clique e baixe os arquivos prontos com legendas dinâmicas e 100% de cessão comercial.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 3: Portfólio & Casos de Uso (#casos-de-uso) -->
+    <section class="page-section" id="casos-de-uso">
+      <div class="section-header">
+        <span class="section-kicker">Catálogo de Criadores</span>
+        <h2 class="section-title">Reels comprovados para cada segmento de produto</h2>
+        <p class="section-desc">
+          Explore clipes reais produzidos por nossa rede de criadores especializados em diferentes nichos do mercado.
+        </p>
+      </div>
+
+      <div class="showcase-tabs" id="showcase-tabs">
+        <button class="showcase-tab active" data-filter="all">Todos os Nichos</button>
+        <button class="showcase-tab" data-filter="Moda">Moda & Tênis</button>
+        <button class="showcase-tab" data-filter="Beleza">Beleza & Skincare</button>
+        <button class="showcase-tab" data-filter="Cafés">Cafés & Alimentos</button>
+        <button class="showcase-tab" data-filter="Tecnologia">Tecnologia & Som</button>
+        <button class="showcase-tab" data-filter="Decoração">Decoração & Arte</button>
+      </div>
+
+      <div class="showcase-grid" id="showcase-grid">
+        <!-- Rendered dynamically via JavaScript with filters -->
+      </div>
+    </section>
+
+    <!-- SECTION 4: Depoimentos & Prova Real -->
+    <section class="page-section" id="depoimentos">
+      <div class="section-header">
+        <span class="section-kicker">Quem Confia</span>
+        <h2 class="section-title">O que dizem os líderes que transformaram seus criativos</h2>
+        <p class="section-desc">
+          Veja como marcas modernas trocaram estúdios caros por vídeos dinâmicos focados em conversão real.
+        </p>
+      </div>
+
+      <div class="testimonials-grid">
+        <div class="testimonial-card">
+          <p class="testimonial-quote">
+            "Substituímos toda a nossa produção de agência pela Reelmark. Nosso custo por aquisição (CAC) caiu 42% no primeiro mês de testes de hooks no TikTok."
+          </p>
+          <div class="testimonial-author">
+            <div class="testimonial-avatar">SM</div>
+            <div>
+              <div class="testimonial-name">Sofia Mendes</div>
+              <div class="testimonial-role">Head de Growth na Lumina Skincare</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="testimonial-card">
+          <p class="testimonial-quote">
+            "A agilidade de entrega é incomparável. Lançamos nossa nova linha esportiva e tínhamos 6 criadores diferentes com conteúdos autênticos no dia exato do drop."
+          </p>
+          <div class="testimonial-author">
+            <div class="testimonial-avatar">RC</div>
+            <div>
+              <div class="testimonial-name">Rafael Costa</div>
+              <div class="testimonial-role">Fundador & CEO da AeroStride</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="testimonial-card">
+          <p class="testimonial-quote">
+            "O nível de captação e sensibilidade estética é impressionante. Nossos reels geraram mais de 3 milhões de visualizações orgânicas sem precisarmos de equipe interna."
+          </p>
+          <div class="testimonial-author">
+            <div class="testimonial-avatar">BL</div>
+            <div>
+              <div class="testimonial-name">Beatriz Lima</div>
+              <div class="testimonial-role">Diretora Criativa na Botanik Lab</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 5: Planos & Preços (#precos) -->
+    <section class="page-section" id="precos">
+      <div class="section-header">
+        <span class="section-kicker">Investimento Transparente</span>
+        <h2 class="section-title">Escolha o plano ideal para a escala da sua marca</h2>
+        <p class="section-desc">
+          Preços fixos, sem contratos amarrados e com garantia de satisfação. Cancele ou altere seu plano quando quiser.
+        </p>
+      </div>
+
+      <div class="pricing-toggle-wrap">
+        <div class="pricing-switch-btn" id="pricing-switch">
+          <span class="pricing-switch-option active" id="btn-period-monthly">Faturamento Mensal</span>
+          <span class="pricing-switch-option" id="btn-period-annual">Faturamento Anual</span>
+        </div>
+        <span class="pricing-badge-save">Economize 20%</span>
+      </div>
+
+      <div class="pricing-grid">
+        <!-- Plano Starter -->
+        <div class="pricing-card">
+          <h3 class="pricing-plan-name">Starter</h3>
+          <p class="pricing-plan-desc">Perfeito para lojas independentes que querem validar anúncios em vídeo.</p>
+          <div class="pricing-price-box">
+            <span class="pricing-currency">R$</span>
+            <span class="pricing-amount" id="price-val-starter">1.490</span>
+            <span class="pricing-period">/mês</span>
+          </div>
+          <ul class="pricing-features-list">
+            <li class="pricing-feature-item">
+              <span class="pricing-feature-icon">&#10003;</span>
+              <strong>4 Reels exclusivos</strong> por mês
+            </li>
+            <li class="pricing-feature-item">
+              <span class="pricing-feature-icon">&#10003;</span>
+              2 criadores selecionados do nicho
+            </li>
+            <li class="pricing-feature-item">
+              <span class="pricing-feature-icon">&#10003;</span>
+              Edição com legendas dinâmicas
+            </li>
+            <li class="pricing-feature-item">
+              <span class="pricing-feature-icon">&#10003;</span>
+              2 rodadas de ajustes inclusas
+            </li>
+            <li class="pricing-feature-item">
+              <span class="pricing-feature-icon">&#10003;</span>
+              Cessão comercial perpétua
+            </li>
+          </ul>
+          <button class="pricing-btn pricing-btn-outline" data-plan="Starter">Começar com Starter</button>
+        </div>
+
+        <!-- Plano Growth (Destaque) -->
+        <div class="pricing-card featured">
+          <div class="pricing-popular-tag">Mais Escolhido</div>
+          <h3 class="pricing-plan-name">Growth Viral</h3>
+          <p class="pricing-plan-desc">Para marcas prontas para escalar tráfego pago no TikTok Ads e Meta.</p>
+          <div class="pricing-price-box">
+            <span class="pricing-currency">R$</span>
+            <span class="pricing-amount" id="price-val-growth">3.890</span>
+            <span class="pricing-period">/mês</span>
+          </div>
+          <ul class="pricing-features-list">
+            <li class="pricing-feature-item">
+              <span class="pricing-feature-icon">&#10003;</span>
+              <strong>12 Reels exclusivos</strong> por mês
+            </li>
+            <li class="pricing-feature-item">
+              <span class="pricing-feature-icon">&#10003;</span>
+              5 criadores de elite dedicados
+            </li>
+            <li class="pricing-feature-item">
+              <span class="pricing-feature-icon">&#10003;</span>
+              <strong>Variações de primeiros 3s (hooks A/B)</strong>
+            </li>
+            <li class="pricing-feature-item">
+              <span class="pricing-feature-icon">&#10003;</span>
+              Entrega prioritária em até 48h
+            </li>
+            <li class="pricing-feature-item">
+              <span class="pricing-feature-icon">&#10003;</span>
+              Revisões ilimitadas
+            </li>
+            <li class="pricing-feature-item">
+              <span class="pricing-feature-icon">&#10003;</span>
+              Gerente de suporte via WhatsApp
+            </li>
+          </ul>
+          <button class="pricing-btn pricing-btn-primary" data-plan="Growth Viral">Assinar Growth Viral</button>
+        </div>
+
+        <!-- Plano Scale -->
+        <div class="pricing-card">
+          <h3 class="pricing-plan-name">Scale Studio</h3>
+          <p class="pricing-plan-desc">Para operações consolidadas com alto volume de campanhas multicanais.</p>
+          <div class="pricing-price-box">
+            <span class="pricing-currency">R$</span>
+            <span class="pricing-amount" id="price-val-scale">7.990</span>
+            <span class="pricing-period">/mês</span>
+          </div>
+          <ul class="pricing-features-list">
+            <li class="pricing-feature-item">
+              <span class="pricing-feature-icon">&#10003;</span>
+              <strong>30+ Reels exclusivos</strong> por mês
+            </li>
+            <li class="pricing-feature-item">
+              <span class="pricing-feature-icon">&#10003;</span>
+              Squad exclusivo com 10 criadores
+            </li>
+            <li class="pricing-feature-item">
+              <span class="pricing-feature-icon">&#10003;</span>
+              Pós-produção avançada e color grading
+            </li>
+            <li class="pricing-feature-item">
+              <span class="pricing-feature-icon">&#10003;</span>
+              Entrega expressa contínua
+            </li>
+            <li class="pricing-feature-item">
+              <span class="pricing-feature-icon">&#10003;</span>
+              Diretor de criação dedicado
+            </li>
+          </ul>
+          <button class="pricing-btn pricing-btn-outline" data-plan="Scale Studio">Falar com Consultor</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 6: Perguntas Frequentes (FAQ) -->
+    <section class="page-section" id="faq">
+      <div class="section-header">
+        <span class="section-kicker">Tire suas Dúvidas</span>
+        <h2 class="section-title">Perguntas Frequentes</h2>
+        <p class="section-desc">Tudo o que você precisa saber sobre como funciona a Reelmark.</p>
+      </div>
+
+      <div class="faq-list">
+        <div class="faq-item open">
+          <div class="faq-question">
+            <span>Como é feito o envio dos produtos para os criadores?</span>
+            <svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+              <polyline points="6 9 12 15 18 9"></polyline>
+            </svg>
+          </div>
+          <div class="faq-answer">
+            Assim que você aprova a lista de criadores no painel, nossa plataforma gera automaticamente etiquetas de postagem e os endereços de cada um. Você envia os produtos e acompanha o rastreamento em tempo real.
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <div class="faq-question">
+            <span>Os direitos comerciais dos vídeos pertencem à minha marca?</span>
+            <svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+              <polyline points="6 9 12 15 18 9"></polyline>
+            </svg>
+          </div>
+          <div class="faq-answer">
+            Sim, 100%! Todos os contratos incluem cessão irrevogável e perpétua de direitos autorais para anúncios pagos (Meta, TikTok Ads, Google), postagens orgânicas, páginas de produtos e e-mail marketing.
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <div class="faq-question">
+            <span>E se o vídeo entregue não atender às minhas expectativas?</span>
+            <svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+              <polyline points="6 9 12 15 18 9"></polyline>
+            </svg>
+          </div>
+          <div class="faq-answer">
+            Todos os planos incluem rodadas de revisão de corte, trilha sonora e legendas. Caso o criador não tenha seguido o roteiro acordado no briefing, realizamos a regravação sem nenhum custo adicional.
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <div class="faq-question">
+            <span>Qual é o prazo médio de entrega dos primeiros vídeos?</span>
+            <svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+              <polyline points="6 9 12 15 18 9"></polyline>
+            </svg>
+          </div>
+          <div class="faq-answer">
+            O prazo médio para o primeiro corte é de 48 a 72 horas após o criador acusar o recebimento do produto físico em mãos. No plano Growth e Scale, priorizamos entregas em 48 horas.
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <div class="faq-question">
+            <span>Existe fidelidade ou contrato de permanência mínima?</span>
+            <svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+              <polyline points="6 9 12 15 18 9"></polyline>
+            </svg>
+          </div>
+          <div class="faq-answer">
+            Nenhuma fidelidade. Nossos planos mensais podem ser pausados ou cancelados a qualquer momento diretamente no seu painel de controle, sem multas ou taxas ocultas.
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 7: CTA Final (#contato) -->
+    <section class="page-section" id="contato">
+      <div class="cta-banner-box">
+        <h2 class="cta-banner-title">Pronto para colocar sua marca em destaque?</h2>
+        <p class="cta-banner-desc">
+          Junte-se a mais de 120.000 criadores e marcas independentes. Crie sua primeira campanha hoje mesmo sem custo inicial.
+        </p>
+        <div class="cta-banner-btn-group">
+          <button class="cta-banner-primary-btn" id="btn-cta-bottom">Criar meu Primeiro Reel</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="footer-main">
+      <div class="footer-left">
+        <svg class="logo-leaf" viewBox="0 0 24 24" style="width: 20px; height: 20px;">
+          <path d="M17 8C8 10 5.9 16.17 3.82 21.34l1.89.66.95-2.3c.48.17.98.3 1.34.3C19 20 22 3 22 3c-1 2-8 2.25-13 3.25S2 11.5 2 13.5c0 4.5 4 8 8 8 2.5 0 4.5-1.5 7-5.5.5-.8 1-1.6 1.5-2.5-.5-.4-1-.9-1.5-1.5z"/>
+        </svg>
+        <span class="logo-text" style="font-size: 19px;">Reelmark</span>
+        <span class="footer-copy">&copy; 2026 Reelmark Studio. Todos os direitos reservados.</span>
+      </div>
+      <nav class="footer-nav">
+        <a href="#marcas">Marcas</a>
+        <a href="#criadores">Criadores</a>
+        <a href="#precos">Preços</a>
+        <a href="#casos-de-uso">Casos de Uso</a>
+        <a href="#faq">Dúvidas</a>
+        <a href="#contato">Contato</a>
+      </nav>
+    </footer>
+
+    <!-- Modal Dialog: Creator Detail / Reel Preview -->
+    <div class="modal-backdrop" id="modal-backdrop">
+      <div class="modal-box" id="modal-box">
+        <button class="modal-close" id="modal-close" aria-label="Close dialog">&times;</button>
+        <div id="modal-content">
+          <!-- Populated by JS -->
+        </div>
+      </div>
+    </div>
+
+    <!-- Toast Notification -->
+    <div class="toast" id="toast"></div>
+
+    <!-- Single Vanilla JS Script -->
+    <script>
+      (function () {
+        'use strict';
+
+        // Constant Media URLs
+        const POSTER_URL = 'https://d2ol7oe51mr4n9.cloudfront.net/user_38xzZboKViGWJOttwIXH07lWA1P/b7ebb74a-8c8a-4f7e-8f80-55e2d74ecd05.webp';
+        const VIDEO_URL = 'https://d2ol7oe51mr4n9.cloudfront.net/user_38xzZboKViGWJOttwIXH07lWA1P/04fd3d5f-99d7-476e-98a4-46c08518ffb3.mp4';
+
+        // Tile Metadata (Row-major 5x2 grid)
+        const TILES = [
+          { id: 0, title: 'Tênis Hyperion Runner', category: 'Lançamento de Tênis', creator: '@kai.motion', views: '2,4M', col: 0, row: 0 },
+          { id: 1, title: 'Splash Botânico Dew', category: 'Cuidados com a Pele', creator: '@elena_glow', views: '4,8M', col: 1, row: 0 },
+          { id: 2, title: 'Preparo Barista Velvet', category: 'Cafés Especiais', creator: '@roastworks', views: '1,9M', col: 2, row: 0 },
+          { id: 3, title: 'Fone Acústico Studio ANC', category: 'Tecnologia de Áudio', creator: '@devon_audio', views: '3,1M', col: 3, row: 0 },
+          { id: 4, title: 'Tour pelo Viveiro Monstera', category: 'Plantas & Botânica', creator: '@flora_studio', views: '870 mil', col: 4, row: 0 },
+          { id: 5, title: 'Florescer Silvestre', category: 'Floricultura', creator: '@petals_co', views: '1,2M', col: 0, row: 1 },
+          { id: 6, title: 'Torno de Cerâmica Terra', category: 'Cerâmica Artesanal', creator: '@claycraft', views: '950 mil', col: 1, row: 1 },
+          { id: 7, title: 'Sérum Glow Drops', category: 'Cosméticos & Beleza', creator: '@chloe_beauty', views: '5,2M', col: 2, row: 1 },
+          { id: 8, title: 'Latte Art Roseta', category: 'Arte Culinária', creator: '@espresso_lab', views: '3,7M', col: 3, row: 1 },
+          { id: 9, title: 'Suporte de Som em Alumínio', category: 'Design Industrial', creator: '@minimal_gear', views: '2,0M', col: 4, row: 1 }
+        ];
+
+        const carouselEl = document.getElementById('carousel');
+        const clipDefsContainer = document.getElementById('clip-paths-container');
+        const frameEl = document.getElementById('frame');
+
+        const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+        // Create 10 card DOM elements and clipPath definitions
+        const cardElements = [];
+        const cardMediaBoxes = [];
+        const cardVideos = [];
+        const cardPosters = [];
+        const clipPathElements = [];
+
+        for (let i = 0; i < 10; i++) {
+          const tile = TILES[i];
+
+          // ClipPath SVG definition
+          const clipId = 'card-quad-clip-' + i;
+          const clipEl = document.createElementNS('http://www.w3.org/2000/svg', 'clipPath');
+          clipEl.setAttribute('id', clipId);
+          clipEl.setAttribute('clipPathUnits', 'userSpaceOnUse');
+          const pathEl = document.createElementNS('http://www.w3.org/2000/svg', 'path');
+          clipEl.appendChild(pathEl);
+          clipDefsContainer.appendChild(clipEl);
+          clipPathElements.push(pathEl);
+
+          // Card Item
+          const card = document.createElement('div');
+          card.className = 'card-item';
+          card.setAttribute('data-index', i.toString());
+          card.setAttribute('aria-label', tile.title + ' by ' + tile.creator);
+
+          // Card Media Box
+          const mediaBox = document.createElement('div');
+          mediaBox.className = 'card-media-box';
+
+          // Poster Image
+          const poster = document.createElement('img');
+          poster.className = 'card-poster';
+          poster.src = POSTER_URL;
+          poster.alt = tile.title;
+          poster.setAttribute('referrerpolicy', 'no-referrer');
+          mediaBox.appendChild(poster);
+
+          // Video Element (single shared source)
+          let video = null;
+          if (!prefersReducedMotion) {
+            video = document.createElement('video');
+            video.className = 'card-video';
+            video.src = VIDEO_URL;
+            video.muted = true;
+            video.loop = true;
+            video.playsInline = true;
+            video.setAttribute('playsinline', '');
+            video.setAttribute('muted', '');
+            video.setAttribute('loop', '');
+            video.preload = 'auto';
+
+            video.addEventListener('canplay', function () {
+              video.style.opacity = '1';
+            }, { once: true });
+
+            video.addEventListener('playing', function () {
+              video.style.opacity = '1';
+            }, { once: true });
+
+            mediaBox.appendChild(video);
+          }
+
+          // Frosted Play Icon at bottom-left
+          const playIcon = document.createElement('div');
+          playIcon.className = 'card-play-icon';
+          const playTriangle = document.createElement('div');
+          playTriangle.className = 'card-play-triangle';
+          playIcon.appendChild(playTriangle);
+
+          card.appendChild(mediaBox);
+          card.appendChild(playIcon);
+          carouselEl.appendChild(card);
+
+          cardElements.push(card);
+          cardMediaBoxes.push(mediaBox);
+          cardVideos.push(video);
+          cardPosters.push(poster);
+
+          // Card Click handler: Opens detail modal
+          card.addEventListener('click', function (e) {
+            if (dragDistance > 6) return; // Ignore if user was dragging
+            openCardModal(tile);
+          });
+        }
+
+        // Master video playback control
+        let isMasterPlaying = false;
+        function startVideos() {
+          if (isMasterPlaying || prefersReducedMotion) return;
+          isMasterPlaying = true;
+          cardVideos.forEach(function (v) {
+            if (v) {
+              const promise = v.play();
+              if (promise !== undefined) {
+                promise.catch(function () {
+                  // Autoplay policy fallback: click anywhere to start
+                  window.addEventListener('click', function () {
+                    v.play();
+                  }, { once: true });
+                });
+              }
+            }
+          });
+        }
+
+        // Sync videos periodically to keep all 10 on the same timestamp
+        setInterval(function () {
+          if (prefersReducedMotion || !cardVideos[0]) return;
+          const targetTime = cardVideos[0].currentTime;
+          for (let j = 1; j < cardVideos.length; j++) {
+            const v = cardVideos[j];
+            if (v && Math.abs(v.currentTime - targetTime) > 0.15) {
+              v.currentTime = targetTime;
+            }
+          }
+        }, 1200);
+
+        // Web Animations Long-Running Clock
+        const clockAnim = document.documentElement.animate([], { duration: 1e9 });
+        let lastClockTime = clockAnim.currentTime || performance.now();
+
+        // Carousel Physics State
+        let scrollOffset = 0; // in frame units u
+        const AUTO_SPEED = 50; // 50u per second right -> left
+        let momentumVelocity = 0; // extra velocity added by drag release
+        let isDragging = false;
+        let startPointerX = 0;
+        let lastPointerX = 0;
+        let lastPointerTime = 0;
+        let pointerVelocity = 0;
+        let dragDistance = 0;
+
+        // Pointer / Touch Drag Listeners
+        carouselEl.addEventListener('pointerdown', function (e) {
+          isDragging = true;
+          carouselEl.classList.add('is-dragging');
+          startPointerX = e.clientX;
+          lastPointerX = e.clientX;
+          lastPointerTime = performance.now();
+          pointerVelocity = 0;
+          dragDistance = 0;
+          momentumVelocity = 0;
+          carouselEl.setPointerCapture(e.pointerId);
+          startVideos();
+        });
+
+        window.addEventListener('pointermove', function (e) {
+          if (!isDragging) return;
+          const now = performance.now();
+          const dt = (now - lastPointerTime) / 1000;
+          const dx = e.clientX - lastPointerX;
+          dragDistance += Math.abs(dx);
+
+          const u = getUnitScale();
+          // Moving pointer left (dx < 0) advances scroll (positive delta)
+          const du = -dx / u;
+          scrollOffset += du;
+
+          if (dt > 0.008) {
+            const instantVel = du / dt;
+            // Smoothed velocity
+            pointerVelocity = pointerVelocity * 0.4 + instantVel * 0.6;
+            lastPointerX = e.clientX;
+            lastPointerTime = now;
+          }
+        });
+
+        function endDrag(e) {
+          if (!isDragging) return;
+          isDragging = false;
+          carouselEl.classList.remove('is-dragging');
+          // Clamp velocity to reasonable bounds
+          momentumVelocity = Math.max(-1800, Math.min(1800, pointerVelocity));
+        }
+
+        window.addEventListener('pointerup', endDrag);
+        window.addEventListener('pointercancel', endDrag);
+
+        // Helper: get current scale unit `--u` in pixels
+        function getUnitScale() {
+          const isMobile = window.innerWidth <= 820;
+          if (isMobile) {
+            return window.innerWidth / 640;
+          }
+          return Math.min(window.innerWidth / 1440, window.innerHeight / 1080);
+        }
+
+        // Geometry Engine: updates all 10 cards based on current scrollOffset
+        function updateCarousel(dt) {
+          const u = getUnitScale();
+          const isMobile = window.innerWidth <= 820;
+          const containerWidth = isMobile ? window.innerWidth : 1440 * u;
+          const containerCenter = isMobile ? window.innerWidth / 2 : 720 * u;
+          const unitNorm = isMobile ? 350 * u : 706 * u;
+          const centerYBase = isMobile ? 130 * u : 687 * u;
+
+          // Physics integration: momentum decays 95% per second
+          if (!isDragging && !prefersReducedMotion) {
+            const decay = Math.pow(0.05, dt);
+            momentumVelocity *= decay;
+            if (Math.abs(momentumVelocity) < 1.5) momentumVelocity = 0;
+
+            // Auto-scroll + decaying momentum
+            scrollOffset += (AUTO_SPEED + momentumVelocity) * dt;
+          }
+
+          const PITCH = 196;
+          const TOTAL_PITCH = 10 * PITCH; // 1960u
+
+          for (let i = 0; i < 10; i++) {
+            const cardEl = cardElements[i];
+            const clipPathEl = clipPathElements[i];
+            const mediaBoxEl = cardMediaBoxes[i];
+            const videoEl = cardVideos[i];
+            const posterEl = cardPosters[i];
+
+            // Seamless wrap offset t in [-980, 980]
+            let t = ((i * PITCH - scrollOffset) % TOTAL_PITCH + TOTAL_PITCH) % TOTAL_PITCH;
+            if (t > TOTAL_PITCH / 2) t -= TOTAL_PITCH;
+
+            // Mathematical Curve Formulas from brief:
+            // x = 720 + t * (1 + 0.083 * (t / 706)^2)
+            const tNorm = t / 706;
+            const pushedX = 720 + t * (1 + 0.083 * tNorm * tNorm);
+            const d = Math.abs(pushedX - 720) / 706;
+
+            // Card width = (170 + 48 * d^2)u
+            const cardW = 170 + 48 * d * d;
+
+            // Card edges
+            const xLeft = pushedX - cardW / 2;
+            const xRight = pushedX + cardW / 2;
+
+            const qLeft = Math.abs(xLeft - 720) / 706;
+            const qRight = Math.abs(xRight - 720) / 706;
+
+            // Edge heights: h = (280 + 92 * q^2.6)u
+            const hLeft = 280 + 92 * Math.pow(qLeft, 2.6);
+            const hRight = 280 + 92 * Math.pow(qRight, 2.6);
+
+            // Vertical center = (687 - 12 * d^2)u
+            const yCenter = 687 - 12 * d * d;
+
+            // Screen pixel coordinates
+            const screenXLeft = isMobile
+              ? containerCenter + (xLeft - 720) * (u * 0.95)
+              : xLeft * u;
+            const screenCardW = cardW * u;
+            const screenHLeft = isMobile ? hLeft * u * 0.7 : hLeft * u;
+            const screenHRight = isMobile ? hRight * u * 0.7 : hRight * u;
+            const screenYCenter = isMobile
+              ? centerYBase - (12 * d * d) * u
+              : yCenter * u;
+
+            const boxH = Math.max(screenHLeft, screenHRight) + 20 * u;
+            const screenYTop = screenYCenter - boxH / 2;
+
+            // Culling: check if card is within visible bounds
+            if (screenXLeft + screenCardW < -80 * u || screenXLeft > containerWidth + 80 * u) {
+              cardEl.style.display = 'none';
+              continue;
+            } else {
+              cardEl.style.display = 'block';
+            }
+
+            // Position Card Box
+            cardEl.style.width = screenCardW.toFixed(2) + 'px';
+            cardEl.style.height = boxH.toFixed(2) + 'px';
+            cardEl.style.transform = 'translate3d(' + screenXLeft.toFixed(2) + 'px, ' + screenYTop.toFixed(2) + 'px, 0)';
+
+            // Generate Rounded Quad Path with 15u corner radius
+            const r = Math.min(15 * u, screenCardW * 0.35);
+            const yMid = boxH / 2;
+            const y0 = yMid - screenHLeft / 2;
+            const y1 = yMid - screenHRight / 2;
+            const y2 = yMid + screenHRight / 2;
+            const y3 = yMid + screenHLeft / 2;
+
+            // Top edge tangent unit vector
+            const topDx = screenCardW;
+            const topDy = y1 - y0;
+            const topLen = Math.hypot(topDx, topDy);
+            const topUx = topDx / topLen;
+            const topUy = topDy / topLen;
+
+            // Bottom edge tangent unit vector
+            const botDx = -screenCardW;
+            const botDy = y3 - y2;
+            const botLen = Math.hypot(botDx, botDy);
+            const botUx = botDx / botLen;
+            const botUy = botDy / botLen;
+
+            const pathD = [
+              'M', 0, (y0 + r).toFixed(2),
+              'Q', 0, y0.toFixed(2), (r * topUx).toFixed(2), (y0 + r * topUy).toFixed(2),
+              'L', (screenCardW - r * topUx).toFixed(2), (y1 - r * topUy).toFixed(2),
+              'Q', screenCardW.toFixed(2), y1.toFixed(2), screenCardW.toFixed(2), (y1 + r).toFixed(2),
+              'L', screenCardW.toFixed(2), (y2 - r).toFixed(2),
+              'Q', screenCardW.toFixed(2), y2.toFixed(2), (screenCardW + r * botUx).toFixed(2), (y2 + r * botUy).toFixed(2),
+              'L', (-r * botUx).toFixed(2), (y3 - r * botUy).toFixed(2),
+              'Q', 0, y3.toFixed(2), 0, (y3 - r).toFixed(2),
+              'Z'
+            ].join(' ');
+
+            // Apply hardware-accelerated SVG clip-path and CSS clip-path path()
+            clipPathEl.setAttribute('d', pathD);
+            const pathRule = 'path("' + pathD + '")';
+            cardEl.style.clipPath = pathRule;
+            cardEl.style.webkitClipPath = pathRule;
+            // Fallback to SVG clip-path URL if path() is unsupported in older engine
+            if (!cardEl.style.clipPath || cardEl.style.clipPath === 'none') {
+              const clipUrl = 'url(#card-quad-clip-' + i + ')';
+              cardEl.style.clipPath = clipUrl;
+              cardEl.style.webkitClipPath = clipUrl;
+            }
+
+            // Media Tile Cover-Fit sizing:
+            // "where the tile height is max(card height, card width / 0.7111)"
+            const maxCardH = Math.max(screenHLeft, screenHRight);
+            const tileH = Math.max(maxCardH, screenCardW / 0.7111);
+            const tileW = tileH * 0.7111;
+
+            const gridW = 5 * tileW;
+            const gridH = 2 * tileH;
+
+            const tileMeta = TILES[i];
+            const tileCenterX = tileMeta.col * tileW + tileW / 2;
+            const tileCenterY = tileMeta.row * tileH + tileH / 2;
+
+            const mediaLeft = screenCardW / 2 - tileCenterX;
+            const mediaTop = yMid - tileCenterY;
+
+            // Apply size and offset to poster and video
+            const mediaStyle = {
+              width: gridW.toFixed(1) + 'px',
+              height: gridH.toFixed(1) + 'px',
+              left: mediaLeft.toFixed(1) + 'px',
+              top: mediaTop.toFixed(1) + 'px'
+            };
+
+            posterEl.style.width = mediaStyle.width;
+            posterEl.style.height = mediaStyle.height;
+            posterEl.style.left = mediaStyle.left;
+            posterEl.style.top = mediaStyle.top;
+
+            if (videoEl) {
+              videoEl.style.width = mediaStyle.width;
+              videoEl.style.height = mediaStyle.height;
+              videoEl.style.left = mediaStyle.left;
+              videoEl.style.top = mediaStyle.top;
+            }
+          }
+        }
+
+        // Animation Loop using clockAnim / requestAnimationFrame
+        function tick() {
+          const now = clockAnim.currentTime || performance.now();
+          const dt = Math.min(0.05, Math.max(0.001, (now - lastClockTime) / 1000));
+          lastClockTime = now;
+
+          updateCarousel(dt);
+          requestAnimationFrame(tick);
+        }
+
+        // Initialize First Frame
+        updateCarousel(0.016);
+        requestAnimationFrame(tick);
+
+        // Entrance Web Animations sequence
+        function runEntranceAnimations() {
+          if (prefersReducedMotion) return;
+
+          const navHeader = document.getElementById('nav-header');
+          const heroBadge = document.getElementById('hero-badge');
+          const line1 = document.querySelector('.headline-line-1');
+          const line2 = document.querySelector('.headline-line-2');
+          const heroSubline = document.getElementById('hero-subline');
+          const carouselWrapper = document.getElementById('carousel-wrapper');
+          const ctaWrapper = document.getElementById('cta-wrapper');
+          const noteBeseen = document.getElementById('note-beseen');
+          const noteZerocost = document.getElementById('note-zerocost');
+
+          // Nav drops in
+          navHeader.animate([
+            { opacity: 0, transform: 'translateY(-24px)' },
+            { opacity: 1, transform: 'translateY(0)' }
+          ], { duration: 650, easing: 'cubic-bezier(0.16, 1, 0.3, 1)', fill: 'forwards' });
+
+          // Badge pops
+          heroBadge.animate([
+            { opacity: 0, transform: 'scale(0.8)' },
+            { opacity: 1, transform: 'scale(1)' }
+          ], { delay: 150, duration: 550, easing: 'cubic-bezier(0.34, 1.56, 0.64, 1)', fill: 'forwards' });
+
+          // Headline lines rise out of a blur
+          line1.animate([
+            { opacity: 0, transform: 'translateY(36px)', filter: 'blur(12px)' },
+            { opacity: 1, transform: 'translateY(0)', filter: 'blur(0px)' }
+          ], { delay: 240, duration: 750, easing: 'cubic-bezier(0.16, 1, 0.3, 1)', fill: 'forwards' });
+
+          line2.animate([
+            { opacity: 0, transform: 'translateY(36px)', filter: 'blur(12px)' },
+            { opacity: 1, transform: 'translateY(0)', filter: 'blur(0px)' }
+          ], { delay: 360, duration: 750, easing: 'cubic-bezier(0.16, 1, 0.3, 1)', fill: 'forwards' });
+
+          // Subline rises
+          heroSubline.animate([
+            { opacity: 0, transform: 'translateY(24px)' },
+            { opacity: 1, transform: 'translateY(0)' }
+          ], { delay: 480, duration: 650, easing: 'cubic-bezier(0.16, 1, 0.3, 1)', fill: 'forwards' });
+
+          // Card row rises in
+          carouselWrapper.animate([
+            { opacity: 0, transform: 'translateY(60px)' },
+            { opacity: 1, transform: 'translateY(0)' }
+          ], { delay: 420, duration: 800, easing: 'cubic-bezier(0.16, 1, 0.3, 1)', fill: 'forwards' });
+
+          // Button scales in
+          ctaWrapper.animate([
+            { opacity: 0, transform: 'scale(0.85)' },
+            { opacity: 1, transform: 'scale(1)' }
+          ], { delay: 620, duration: 550, easing: 'cubic-bezier(0.34, 1.4, 0.64, 1)', fill: 'forwards' });
+
+          // Notes fade in
+          noteBeseen.animate([
+            { opacity: 0, transform: 'rotate(16deg) scale(0.9)' },
+            { opacity: 1, transform: 'rotate(16deg) scale(1)' }
+          ], { delay: 720, duration: 550, easing: 'ease-out', fill: 'forwards' });
+
+          noteZerocost.animate([
+            { opacity: 0, transform: 'rotate(24deg) scale(0.9)' },
+            { opacity: 1, transform: 'rotate(24deg) scale(1)' }
+          ], { delay: 760, duration: 550, easing: 'ease-out', fill: 'forwards' });
+
+          // Doodle strokes draw in
+          const drawStrokes = document.querySelectorAll('.draw-stroke');
+          drawStrokes.forEach(function (stroke, idx) {
+            try {
+              const len = stroke.getTotalLength();
+              stroke.style.strokeDasharray = len + ' ' + len;
+              stroke.style.strokeDashoffset = len;
+              stroke.animate([
+                { strokeDashoffset: len },
+                { strokeDashoffset: 0 }
+              ], {
+                delay: 700 + idx * 80,
+                duration: 650,
+                easing: 'cubic-bezier(0.2, 0.8, 0.2, 1)',
+                fill: 'forwards'
+              });
+            } catch (e) {
+              // Ignore if getTotalLength fails
+            }
+          });
+        }
+
+        // Run Entrance
+        if (document.readyState === 'loading') {
+          document.addEventListener('DOMContentLoaded', runEntranceAnimations);
+        } else {
+          runEntranceAnimations();
+        }
+
+        // Start video playback on first interaction
+        window.addEventListener('click', startVideos, { once: true });
+        window.addEventListener('touchstart', startVideos, { once: true });
+        setTimeout(startVideos, 800);
+
+        // Toast feedback
+        const toastEl = document.getElementById('toast');
+        let toastTimeout = null;
+        function showToast(msg) {
+          toastEl.textContent = msg;
+          toastEl.classList.add('visible');
+          if (toastTimeout) clearTimeout(toastTimeout);
+          toastTimeout = setTimeout(function () {
+            toastEl.classList.remove('visible');
+          }, 3000);
+        }
+
+        // Modal Logic
+        const modalBackdrop = document.getElementById('modal-backdrop');
+        const modalBox = document.getElementById('modal-box');
+        const modalContent = document.getElementById('modal-content');
+        const modalClose = document.getElementById('modal-close');
+
+        function openModalWithHTML(html) {
+          modalContent.innerHTML = html;
+          modalBackdrop.classList.add('open');
+        }
+
+        modalClose.addEventListener('click', function () {
+          modalBackdrop.classList.remove('open');
+        });
+
+        modalBackdrop.addEventListener('click', function (e) {
+          if (e.target === modalBackdrop) {
+            modalBackdrop.classList.remove('open');
+          }
+        });
+
+        // Reel Card Detail Modal
+        function openCardModal(tile) {
+          openModalWithHTML(`
+            <div style="text-align: left;">
+              <span style="display: inline-block; padding: 4px 12px; background: #DAE7C7; color: #08482D; border-radius: 9999px; font-size: 13px; font-weight: 600; margin-bottom: 12px;">${tile.category}</span>
+              <h2 style="font-family: 'Inter Tight', sans-serif; font-size: 26px; font-weight: 700; color: #101410; margin-bottom: 6px;">${tile.title}</h2>
+              <p style="color: #5E5E61; font-size: 14.5px; margin-bottom: 20px;">Produzido por <strong style="color: #08482D;">${tile.creator}</strong> · ${tile.views} visualizações orgânicas</p>
+              <div style="background: #F5F8EF; border-radius: 14px; padding: 18px; margin-bottom: 24px; border: 1px solid rgba(8, 72, 45, 0.1);">
+                <div style="font-size: 13px; font-weight: 600; color: #08482D; margin-bottom: 4px;">Criador Verificado Reelmark</div>
+                <div style="font-size: 13.5px; color: #444; line-height: 1.45;">Disponível para videografia exclusiva de produtos, unboxing dinâmico e reels em 4K para lançamentos. Prazo médio de entrega: 48 horas.</div>
+              </div>
+              <div style="display: flex; gap: 10px;">
+                <button id="modal-book-btn" style="flex: 1; height: 46px; background: #08482D; color: #fff; border: none; border-radius: 9999px; font-weight: 600; font-size: 15px; cursor: pointer;">Contratar ${tile.creator}</button>
+                <button id="modal-save-btn" style="height: 46px; padding: 0 20px; background: #FFFFFF; color: #08482D; border: 1px solid rgba(8, 72, 45, 0.25); border-radius: 9999px; font-weight: 500; font-size: 14.5px; cursor: pointer;">Salvar</button>
+              </div>
+            </div>
+          `);
+
+          document.getElementById('modal-book-btn').addEventListener('click', function () {
+            modalBackdrop.classList.remove('open');
+            showToast('Briefing iniciado com ' + tile.creator + '!');
+          });
+
+          document.getElementById('modal-save-btn').addEventListener('click', function () {
+            modalBackdrop.classList.remove('open');
+            showToast('Adicionado ' + tile.title + ' ao seu painel.');
+          });
+        }
+
+        // CTA "Make a Reel" Button
+        document.getElementById('btn-make-reel').addEventListener('click', function () {
+          openModalWithHTML(`
+            <div style="text-align: left;">
+              <div style="width: 44px; height: 44px; border-radius: 12px; background: #DAE7C7; display: flex; align-items: center; justify-content: center; margin-bottom: 16px;">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="#08482D">
+                  <path d="M17 8C8 10 5.9 16.17 3.82 21.34l1.89.66.95-2.3c.48.17.98.3 1.34.3C19 20 22 3 22 3c-1 2-8 2.25-13 3.25S2 11.5 2 13.5c0 4.5 4 8 8 8 2.5 0 4.5-1.5 7-5.5.5-.8 1-1.6 1.5-2.5-.5-.4-1-.9-1.5-1.5z"/>
+                </svg>
+              </div>
+              <h2 style="font-family: 'Inter Tight', sans-serif; font-size: 26px; font-weight: 700; color: #101410; margin-bottom: 8px;">Lance sua campanha de reels</h2>
+              <p style="color: #5E5E61; font-size: 14.5px; margin-bottom: 20px;">Descreva seu produto ou insira o link da sua loja. Nossos melhores criadores enviarão conceitos e roteiros exclusivos em até 24 horas.</p>
+              <div style="margin-bottom: 16px;">
+                <label style="display: block; font-size: 13px; font-weight: 600; color: #08482D; margin-bottom: 6px;">URL do Produto ou Marca</label>
+                <input type="text" placeholder="https://suamarca.com.br/produto" style="width: 100%; height: 44px; border-radius: 10px; border: 1px solid rgba(8, 72, 45, 0.25); padding: 0 14px; font-size: 14px; outline: none;" />
+              </div>
+              <div style="margin-bottom: 24px;">
+                <label style="display: block; font-size: 13px; font-weight: 600; color: #08482D; margin-bottom: 6px;">Objetivo Principal do Vídeo</label>
+                <select style="width: 100%; height: 44px; border-radius: 10px; border: 1px solid rgba(8, 72, 45, 0.25); padding: 0 14px; font-size: 14px; outline: none; background: #fff;">
+                  <option>Conversão em E-commerce & Anúncios TikTok / Reels</option>
+                  <option>Lançamento de Novo Produto & Teaser</option>
+                  <option>Viralização Orgânica e Engajamento Social</option>
+                  <option>Demonstração de Software & Vídeo Explicativo</option>
+                </select>
+              </div>
+              <button id="modal-submit-brief" style="width: 100%; height: 48px; background: #08482D; color: #fff; border: none; border-radius: 9999px; font-weight: 600; font-size: 15.5px; cursor: pointer;">Publicar Campanha (Sem Custo Inicial)</button>
+            </div>
+          `);
+
+          document.getElementById('modal-submit-brief').addEventListener('click', function () {
+            modalBackdrop.classList.remove('open');
+            showToast('Campanha criada! Roteiros sendo preparados.');
+          });
+        });
+
+        // Smooth scrolling for Navigation & Footer links
+        document.querySelectorAll('.nav-link, .footer-nav a').forEach(function (link) {
+          link.addEventListener('click', function (e) {
+            const targetHref = link.getAttribute('href');
+            if (targetHref && targetHref.startsWith('#')) {
+              const targetEl = document.querySelector(targetHref);
+              if (targetEl) {
+                e.preventDefault();
+                targetEl.scrollIntoView({ behavior: 'smooth' });
+                showToast('Navegando para ' + (link.getAttribute('data-nav') || link.textContent) + '...');
+              }
+            }
+          });
+        });
+
+        // Showcase Grid Renderer & Filter
+        const showcaseGridEl = document.getElementById('showcase-grid');
+        function renderShowcase(filter) {
+          if (!showcaseGridEl) return;
+          showcaseGridEl.innerHTML = '';
+
+          const filtered = TILES.filter(function (t) {
+            if (filter === 'all') return true;
+            if (filter === 'Moda') return t.category.includes('Tênis') || t.category.includes('Moda');
+            if (filter === 'Beleza') return t.category.includes('Pele') || t.category.includes('Beleza') || t.category.includes('Cosméticos');
+            if (filter === 'Cafés') return t.category.includes('Cafés') || t.category.includes('Culinária');
+            if (filter === 'Tecnologia') return t.category.includes('Áudio') || t.category.includes('Som');
+            if (filter === 'Decoração') return t.category.includes('Plantas') || t.category.includes('Cerâmica') || t.category.includes('Design');
+            return true;
+          });
+
+          filtered.forEach(function (tile) {
+            const card = document.createElement('div');
+            card.className = 'showcase-card';
+            card.innerHTML = `
+              <div class="showcase-card-thumb">
+                <img src="${POSTER_URL}" alt="${tile.title}" style="object-position: ${tile.col * 25}% ${tile.row * 100}%; width: 100%; height: 100%; object-fit: cover;" referrerpolicy="no-referrer" />
+                <div class="showcase-card-play">
+                  <div style="width: 0; height: 0; border-top: 6px solid transparent; border-bottom: 6px solid transparent; border-left: 10px solid #08482D; margin-left: 2px;"></div>
+                </div>
+              </div>
+              <div class="showcase-card-body">
+                <span class="showcase-card-cat">${tile.category}</span>
+                <h4 class="showcase-card-name">${tile.title}</h4>
+                <div class="showcase-card-meta">
+                  <span>${tile.creator}</span>
+                  <span style="font-weight: 600; color: #08482D;">${tile.views} views</span>
+                </div>
+              </div>
+            `;
+            card.addEventListener('click', function () {
+              openCardModal(tile);
+            });
+            showcaseGridEl.appendChild(card);
+          });
+        }
+
+        renderShowcase('all');
+
+        // Showcase Tab Switchers
+        document.querySelectorAll('.showcase-tab').forEach(function (tab) {
+          tab.addEventListener('click', function () {
+            document.querySelectorAll('.showcase-tab').forEach(function (t) { t.classList.remove('active'); });
+            tab.classList.add('active');
+            const filter = tab.getAttribute('data-filter');
+            renderShowcase(filter);
+          });
+        });
+
+        // FAQ Accordions
+        document.querySelectorAll('.faq-question').forEach(function (q) {
+          q.addEventListener('click', function () {
+            const item = q.parentElement;
+            const wasOpen = item.classList.contains('open');
+            document.querySelectorAll('.faq-item').forEach(function (it) { it.classList.remove('open'); });
+            if (!wasOpen) {
+              item.classList.add('open');
+            }
+          });
+        });
+
+        // Pricing Period Toggle (Mensal / Anual com 20% desconto)
+        let isAnnual = false;
+        const btnMonthly = document.getElementById('btn-period-monthly');
+        const btnAnnual = document.getElementById('btn-period-annual');
+        const valStarter = document.getElementById('price-val-starter');
+        const valGrowth = document.getElementById('price-val-growth');
+        const valScale = document.getElementById('price-val-scale');
+
+        function updatePricing() {
+          if (isAnnual) {
+            btnMonthly.classList.remove('active');
+            btnAnnual.classList.add('active');
+            valStarter.textContent = '1.190';
+            valGrowth.textContent = '3.110';
+            valScale.textContent = '6.390';
+          } else {
+            btnAnnual.classList.remove('active');
+            btnMonthly.classList.add('active');
+            valStarter.textContent = '1.490';
+            valGrowth.textContent = '3.890';
+            valScale.textContent = '7.990';
+          }
+        }
+
+        if (btnMonthly && btnAnnual) {
+          btnMonthly.addEventListener('click', function () {
+            isAnnual = false;
+            updatePricing();
+          });
+          btnAnnual.addEventListener('click', function () {
+            isAnnual = true;
+            updatePricing();
+          });
+        }
+
+        // Pricing Cards CTA
+        document.querySelectorAll('.pricing-btn').forEach(function (btn) {
+          btn.addEventListener('click', function () {
+            const plan = btn.getAttribute('data-plan') || 'Growth Viral';
+            document.getElementById('btn-make-reel').click();
+            showToast('Plano ' + plan + ' selecionado!');
+          });
+        });
+
+        // Bottom CTA button
+        const btnBottom = document.getElementById('btn-cta-bottom');
+        if (btnBottom) {
+          btnBottom.addEventListener('click', function () {
+            document.getElementById('btn-make-reel').click();
+          });
+        });
+
+        // Login / Sign Up buttons
+        document.getElementById('btn-login').addEventListener('click', function () {
+          openModalWithHTML(`
+            <div>
+              <h2 style="font-family: 'Inter Tight', sans-serif; font-size: 24px; font-weight: 700; color: #101410; margin-bottom: 6px;">Bem-vindo de volta à Reelmark</h2>
+              <p style="color: #5E5E61; font-size: 14px; margin-bottom: 20px;">Acesse suas campanhas, criadores contratados e vídeos em produção.</p>
+              <input type="email" placeholder="seuemail@empresa.com" style="width: 100%; height: 44px; border-radius: 10px; border: 1px solid rgba(8, 72, 45, 0.25); padding: 0 14px; font-size: 14px; outline: none; margin-bottom: 12px;" />
+              <button onclick="document.getElementById('modal-backdrop').classList.remove('open');" style="width: 100%; height: 44px; background: #08482D; color: #fff; border: none; border-radius: 9999px; font-weight: 600; cursor: pointer;">Entrar com E-mail</button>
+            </div>
+          `);
+        });
+
+        document.getElementById('btn-signup').addEventListener('click', function () {
+          openModalWithHTML(`
+            <div>
+              <h2 style="font-family: 'Inter Tight', sans-serif; font-size: 24px; font-weight: 700; color: #101410; margin-bottom: 6px;">Junte-se à Rede Reelmark</h2>
+              <p style="color: #5E5E61; font-size: 14px; margin-bottom: 20px;">Conecte sua marca a criadores de elite ou monetize suas produções de vídeo.</p>
+              <div style="display: flex; gap: 10px; margin-bottom: 16px;">
+                <button style="flex: 1; padding: 14px 10px; border-radius: 12px; border: 2px solid #08482D; background: #F5F8EF; font-weight: 600; color: #08482D; cursor: pointer;">Sou uma Marca</button>
+                <button style="flex: 1; padding: 14px 10px; border-radius: 12px; border: 1px solid rgba(8, 72, 45, 0.2); background: #FFF; font-weight: 500; color: #444; cursor: pointer;">Sou um Criador</button>
+              </div>
+              <input type="email" placeholder="voce@exemplo.com" style="width: 100%; height: 44px; border-radius: 10px; border: 1px solid rgba(8, 72, 45, 0.25); padding: 0 14px; font-size: 14px; outline: none; margin-bottom: 12px;" />
+              <button onclick="document.getElementById('modal-backdrop').classList.remove('open');" style="width: 100%; height: 44px; background: #08482D; color: #fff; border: none; border-radius: 9999px; font-weight: 600; cursor: pointer;">Criar Conta Gratuita</button>
+            </div>
+          `);
+        });
+      })();
+    </script>
+  </body>
+</html>
